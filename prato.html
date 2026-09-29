@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Prato | AE Buffet e Eventos</title>
+  
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Estilos Principais -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dish-page-body">
+
+  <!-- Header Superior Simplificado -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-emblem">AE</div>
+        <div class="brand-text">
+          <h1>AE Buffet</h1>
+          <span>Buffet & Eventos</span>
+        </div>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <a href="index.html?tab=pedidos" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-cart-shopping"></i> Ver Carrinho
+          <span class="cart-badge" style="display: none;">0</span>
+        </a>
+        <a href="index.html" class="btn btn-primary btn-sm">
+          <i class="fa-solid fa-arrow-left"></i> Voltar ao Menu
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de Navegação Breadcrumb -->
+  <div class="dish-breadcrumb-bar">
+    <div class="container">
+      <div class="dish-breadcrumb">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <span>/</span>
+        <a href="index.html?tab=pratos">Pratos</a>
+        <span>/</span>
+        <span id="breadcrumb-dish-name" style="color: var(--primary); font-weight: 700;">Carregando prato...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo Principal do Prato -->
+  <main class="container">
+    <div class="dish-detail-layout" id="dish-detail-container">
+      
+      <!-- Imagem do Prato em Alta Resolução -->
+      <div class="dish-detail-gallery">
+        <img id="dish-main-image" src="" alt="Foto do Prato" class="dish-featured-image">
+        
+        <div style="margin-top: 18px; padding: 18px; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between;">
+          <div style="font-size: 0.88rem; color: var(--text-muted);">
+            <i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i> Ingredientes frescos e preparo artesanal
+          </div>
+          <div style="font-size: 0.88rem; font-weight: 700; color: var(--primary);">
+            AE Buffet e Eventos
+          </div>
+        </div>
+      </div>
+
+      <!-- Informações, Seletor de Porções (5, 10 e 15 pessoas), Ingredientes e Valores -->
+      <div class="dish-detail-info">
+        <span class="dish-detail-category" id="dish-category">Categoria</span>
+        <h1 class="dish-detail-title" id="dish-title">Prato 1</h1>
+        <p class="dish-detail-desc" id="dish-desc">Descrição completa do prato...</p>
+
+        <!-- SELETOR DE PORÇÃO REQUISITADO: 5, 10 OU 15 PESSOAS -->
+        <div class="portion-selector-box">
+          <div class="portion-selector-title">
+            <span><i class="fa-solid fa-users"></i> Escolha o tamanho do seu pedido:</span>
+            <span style="font-size: 0.8rem; font-weight: 600; color: var(--primary);">Selecione a quantidade de convidados</span>
+          </div>
+
+          <div class="portion-cards-grid">
+            <!-- 5 Pessoas -->
+            <button class="portion-card-btn active" data-portion="5" onclick="selectPortion(5)">
+              <div class="portion-people-count">5 Pessoas</div>
+              <div class="portion-card-price" id="card-price-5">R$ --</div>
+            </button>
+
+            <!-- 10 Pessoas -->
+            <button class="portion-card-btn" data-portion="10" onclick="selectPortion(10)">
+              <div class="portion-people-count">10 Pessoas</div>
+              <div class="portion-card-price" id="card-price-10">R$ --</div>
+            </button>
+
+            <!-- 15 Pessoas -->
+            <button class="portion-card-btn" data-portion="15" onclick="selectPortion(15)">
+              <div class="portion-people-count">15 Pessoas</div>
+              <div class="portion-card-price" id="card-price-15">R$ --</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- LISTA DE INGREDIENTES E QUANTIDADES (ATUALIZADA DINAMICAMENTE PARA 5, 10 OU 15 PESSOAS) -->
+        <div class="ingredients-section">
+          <div class="ingredients-header">
+            <h3>
+              <i class="fa-solid fa-basket-shopping" style="color: var(--primary);"></i>
+              Ingredientes do Prato
+            </h3>
+            <span class="ingredients-portion-indicator" id="ingredients-badge">
+              Quantidades para 5 Pessoas
+            </span>
+          </div>
+
+          <ul class="ingredients-list" id="ingredients-list-container">
+            <!-- Renderizado dinamicamente via JavaScript -->
+          </ul>
+
+          <div style="margin-top: 14px; font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-circle-info"></i> As quantidades são calibradas para garantir porções generosas a todos os convidados.
+          </div>
+        </div>
+
+        <!-- CAIXA DE PREÇO EM DESTAQUE E AÇÕES -->
+        <div class="dish-pricing-action-box">
+          <div class="pricing-row">
+            <div>
+              <span class="pricing-label">Valor total para <strong id="selected-portion-label">5 pessoas</strong>:</span>
+              <div class="current-price-display" id="dish-current-price">R$ 0,00</div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Pronto para servir</span>
+              <div style="font-size: 0.88rem; color: var(--primary-dark); font-weight: 600;">Montagem e apresentação inclusas</div>
+            </div>
+          </div>
+
+          <!-- BOTÕES REQUISITADOS: "Fazer Pedido" e "Adicionar ao Carrinho" -->
+          <div class="dish-action-buttons">
+            <button class="btn btn-secondary" onclick="addCurrentToCart()">
+              <i class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho
+            </button>
+            <button class="btn btn-primary" onclick="orderNowCurrentDish()">
+              <i class="fa-solid fa-bolt"></i> Fazer Pedido
+            </button>
+          </div>
+
+          <div style="margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 0.85rem;">
+            <a href="javascript:void(0)" onclick="askDishOnWhatsApp(1)" style="color: var(--whatsapp); font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+              <i class="fa-brands fa-whatsapp"></i> Tirar dúvida no WhatsApp 1
+            </a>
+            <span style="color: var(--border-light);">|</span>
+            <a href="javascript:void(0)" onclick="askDishOnWhatsApp(2)" style="color: var(--whatsapp); font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp 2
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Navegação entre outros pratos -->
+    <section style="margin-top: 70px;">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <span class="section-subtitle">Mais opções para seu evento</span>
+        <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-title);">Conheça outros pratos do Buffet</h3>
+      </div>
+      <div class="dishes-grid" id="other-dishes-grid">
+        <!-- Renderizado dinamicamente -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer simplificado -->
+  <footer class="site-footer" style="margin-top: 80px; padding: 40px 0 20px 0;">
+    <div class="container" style="text-align: center;">
+      <p style="font-size: 0.9rem; color: var(--primary-soft);">&copy; 2026 AE Buffet e Eventos. Sabores inesquecíveis em cada celebração.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/prato.js"></script>
+</body>
+</html>

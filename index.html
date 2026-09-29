@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AE Buffet e Eventos | Sabores Inesquecíveis para Celebrar</title>
+  
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome CDN para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Estilos Principais -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Bar com informações rápidas -->
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <div>
+        <i class="fa-solid fa-map-pin"></i> Atendimento personalizado para casamentos, aniversários e eventos corporativos
+      </div>
+      <div class="top-bar-contact">
+        <a href="https://wa.me/5511999991111" target="_blank" title="Falar no WhatsApp 1">
+          <i class="fa-brands fa-whatsapp"></i> Atendimento 1: (11) 99999-1111
+        </a>
+        <a href="https://wa.me/5511999992222" target="_blank" title="Falar no WhatsApp 2">
+          <i class="fa-brands fa-whatsapp"></i> Atendimento 2: (11) 99999-2222
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Header Principal com Logotipo e Abas de Navegação -->
+  <nav class="site-header">
+    <div class="container header-inner">
+      <a href="javascript:void(0)" onclick="switchTab('pratos')" class="brand-logo">
+        <div class="brand-emblem">AE</div>
+        <div class="brand-text">
+          <h1>AE Buffet</h1>
+          <span>Buffet & Eventos</span>
+        </div>
+      </a>
+
+      <!-- Abas Requisitadas: Pratos, Quem Somos, Contato e Pedidos -->
+      <nav class="nav-tabs" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="pratos" onclick="switchTab('pratos')">
+          <i class="fa-solid fa-utensils"></i> Pratos
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="quem-somos" onclick="switchTab('quem-somos')">
+          <i class="fa-solid fa-heart"></i> Quem Somos
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="contato" onclick="switchTab('contato')">
+          <i class="fa-solid fa-address-book"></i> Contato
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="pedidos" onclick="switchTab('pedidos')">
+          <i class="fa-solid fa-cart-shopping"></i> Pedidos
+          <span class="cart-badge" style="display: none;">0</span>
+        </button>
+      </nav>
+    </div>
+  </nav>
+
+  <!-- Hero Section Elegante -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <i class="fa-solid fa-star"></i> Alta Gastronomia & Afeto
+          </div>
+          <h2 class="hero-title">
+            Momentos especiais merecem <span>sabores memoráveis</span>
+          </h2>
+          <p class="hero-description">
+            O <strong>AE Buffet e Eventos</strong> transforma recepções e encontros em experiências gastronômicas únicas. Explore nossos pratos exclusivos, veja os ingredientes para cada tamanho de evento e faça seu pedido online.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="switchTab('pratos')">
+              <i class="fa-solid fa-utensils"></i> Ver Cardápio de Pratos
+            </button>
+            <button class="btn btn-whatsapp" onclick="openWhatsAppModal()">
+              <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
+            </button>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=900&q=80" alt="Mesa de Buffet Gourmet" class="hero-main-img">
+          <div class="hero-floating-card">
+            <div class="hero-floating-icon">
+              <i class="fa-solid fa-champagne-glasses"></i>
+            </div>
+            <div>
+              <h4>Eventos Sob Medida</h4>
+              <p>Porções para 5, 10 e 15 pessoas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABA 1: PRATOS (Catálogo dos 10 pratos com apenas nome e foto)
+       ========================================================================== -->
+  <section id="tab-pratos" class="tab-pane active" role="tabpanel">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Nosso Catálogo Gourmet</span>
+        <h2 class="section-title">Pratos do Buffet</h2>
+        <p class="section-desc">
+          Selecione qualquer prato abaixo. Ao clicar sobre ele, uma nova aba abrirá exibindo todos os ingredientes, quantidades para 5, 10 e 15 pessoas e seus respectivos valores.
+        </p>
+      </div>
+
+      <div class="dishes-notice">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <span><strong>Dica:</strong> Clique em qualquer prato para abrir a página detalhada em uma nova aba com lista de ingredientes e opções de porção.</span>
+      </div>
+
+      <!-- Grid dinâmico onde serão renderizados do Prato 1 ao Prato 10 -->
+      <div class="dishes-grid" id="dishes-grid">
+        <!-- Renderizado dinamicamente pelo js/main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABA 2: QUEM SOMOS (História das Sócias do Buffet)
+       ========================================================================== -->
+  <section id="tab-quem-somos" class="tab-pane" role="tabpanel">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Nossa Essência</span>
+        <h2 class="section-title">Quem Somos</h2>
+        <p class="section-desc">
+          Conheça a história e a paixão que deram vida ao AE Buffet e Eventos.
+        </p>
+      </div>
+
+      <div class="story-grid">
+        <div class="story-images">
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80" alt="Cozinha artesanal do Buffet" class="story-main-img">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80" alt="Chef preparando prato" class="story-detail-img">
+        </div>
+        <div class="story-text">
+          <h3>Do amor pela cozinha em família ao buffet dos sonhos</h3>
+          <p>
+            O <strong>AE Buffet e Eventos</strong> nasceu da união de duas grandes amigas e apaixonadas pela gastronomia: <strong>Ana</strong> e <strong>Eliana</strong>. Tudo começou nos almoços de domingo e festas de família, onde elas sempre assumiam o comando da cozinha com criações cheias de sabor, capricho e um toque especial de aconchego.
+          </p>
+          <div class="story-quote">
+            "Acreditamos que a comida tem o poder sagrado de conectar pessoas, criar memórias afetivas e transformar momentos simples em celebrações eternas."
+          </div>
+          <p>
+            Com o passar do tempo, os convidados de suas recepções começaram a pedir suas receitas e a encomendar jantares para aniversários e celebrações íntimas. O que era uma dedicação de finais de semana rapidamente floresceu em uma vocação profissional.
+          </p>
+          <p>
+            Hoje, o <strong>AE Buffet</strong> é sinônimo de excelência, sofisticação e atendimento afetuoso. Cada receita é elaborada com ingredientes frescos e selecionados, proporções pensadas com rigor técnico para grupos de 5, 10 e 15 pessoas, e uma apresentação visual que encanta os olhos antes mesmo da primeira garfada.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pilares do Buffet -->
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <h4>Ingredientes Selecionados</h4>
+          <p>Trabalhamos exclusivamente com insumos nobres, carnes de primeira linha, ervas frescas e produtos de alta procedência.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <h4>Cuidado Artesanal</h4>
+          <p>Nada de processos ultraprocessados. Cada molho, risoto e assado é preparado com o tempo e o amor que a alta gastronomia exige.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <h4>Porções Sob Medida</h4>
+          <p>Cardápios calculados com exatidão para 5, 10 e 15 convidados, evitando desperdícios e garantindo fartura.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <i class="fa-solid fa-handshake"></i>
+          </div>
+          <h4>Atendimento Próximo</h4>
+          <p>As próprias fundadoras acompanham cada detalhe do seu pedido com suporte direto e ágil via WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABA 3: CONTATO (Informações e 2 Botões de WhatsApp)
+       ========================================================================== -->
+  <section id="tab-contato" class="tab-pane" role="tabpanel">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Estamos à sua disposição</span>
+        <h2 class="section-title">Fale Conosco</h2>
+        <p class="section-desc">
+          Tire dúvidas, solicite cardápios personalizados ou converse diretamente com nossa equipe através dos nossos canais oficiais de atendimento.
+        </p>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-card-box">
+          <!-- Destaque para os 2 Números de WhatsApp solicitados -->
+          <div class="whatsapp-highlight-box">
+            <div class="whatsapp-box-header">
+              <i class="fa-brands fa-whatsapp"></i>
+              <div>
+                <h3>Nossos Canais de WhatsApp</h3>
+                <p>Clique no botão do canal desejado para iniciar uma conversa imediata:</p>
+              </div>
+            </div>
+
+            <div class="whatsapp-buttons-grid">
+              <!-- Botão WhatsApp 1 -->
+              <a href="https://wa.me/5511999991111?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20AE%20Buffet%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20card%C3%A1pio." target="_blank" class="whatsapp-cta-btn">
+                <div class="whatsapp-btn-info">
+                  <span class="whatsapp-btn-title"><i class="fa-brands fa-whatsapp"></i> WhatsApp 1: Orçamentos & Cardápios</span>
+                  <span class="whatsapp-btn-num">(11) 99999-1111 • Fale com nossa equipe comercial</span>
+                </div>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+              <!-- Botão WhatsApp 2 -->
+              <a href="https://wa.me/5511999992222?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20AE%20Buffet%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20eventos%20e%20encomendas." target="_blank" class="whatsapp-cta-btn">
+                <div class="whatsapp-btn-info">
+                  <span class="whatsapp-btn-title"><i class="fa-brands fa-whatsapp"></i> WhatsApp 2: Coordenação de Eventos</span>
+                  <span class="whatsapp-btn-num">(11) 99999-2222 • Fale com a coordenação de recepções</span>
+                </div>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Informações de contato institucionais -->
+          <ul class="contact-info-list">
+            <li class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="contact-info-text">
+                <h4>E-mail Oficial</h4>
+                <p>contato@aebuffeteventos.com.br</p>
+              </div>
+            </li>
+            <li class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-info-text">
+                <h4>Área de Cobertura</h4>
+                <p>São Paulo e Região Metropolitana (entregas e montagens no local)</p>
+              </div>
+            </li>
+            <li class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div class="contact-info-text">
+                <h4>Horário de Atendimento</h4>
+                <p>Segunda a Sábado das 08h às 19h | Domingo com eventos agendados</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Formulário de Mensagem Rápida -->
+        <div class="contact-form-card">
+          <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-title); margin-bottom: 20px;">
+            Envie uma Mensagem
+          </h3>
+          <form id="contact-form" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Seu Nome Completo</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="Ex: Camila Silva" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-phone">Seu WhatsApp</label>
+              <input type="tel" id="contact-phone" class="form-control" placeholder="(11) 90000-0000" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-date">Data Prevista do Evento</label>
+              <input type="date" id="contact-date" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Detalhes do Evento ou Dúvidas</label>
+              <textarea id="contact-message" class="form-control" placeholder="Conte-nos sobre seu evento, quantidade estimada de pessoas ou preferências..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fa-solid fa-paper-plane"></i> Enviar Mensagem
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABA 4: PEDIDOS (Carrinho e Finalização do Pedido)
+       ========================================================================== -->
+  <section id="tab-pedidos" class="tab-pane" role="tabpanel">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Gestão de Itens</span>
+        <h2 class="section-title">Seu Pedido</h2>
+        <p class="section-desc">
+          Revise os pratos adicionados, ajuste as quantidades e envie o resumo completo do pedido diretamente para um dos nossos números de WhatsApp.
+        </p>
+      </div>
+
+      <div class="cart-layout" id="cart-content-wrapper">
+        <!-- Itens do Carrinho -->
+        <div class="cart-items-card">
+          <div class="cart-card-header">
+            <h3><i class="fa-solid fa-clipboard-list"></i> Pratos Selecionados</h3>
+            <button class="btn btn-secondary btn-sm" onclick="buffetCart.clearCart()">
+              <i class="fa-solid fa-trash-can"></i> Limpar Carrinho
+            </button>
+          </div>
+          
+          <div class="cart-items-list" id="cart-items-container">
+            <!-- Renderizado dinamicamente pelo js/main.js -->
+          </div>
+        </div>
+
+        <!-- Resumo Financeiro e Finalização -->
+        <div class="cart-summary-card">
+          <h3>Resumo da Encomenda</h3>
+          
+          <div class="summary-line">
+            <span>Total de Pratos / Porções:</span>
+            <span id="summary-items-count" style="font-weight: 700;">0 itens</span>
+          </div>
+          
+          <div class="summary-line">
+            <span>Estimativa de pessoas atendidas:</span>
+            <span id="summary-people-estimate" style="font-weight: 700;">0 convidados</span>
+          </div>
+
+          <div class="summary-total">
+            <span>Valor Total:</span>
+            <span id="summary-total-price">R$ 0,00</span>
+          </div>
+
+          <!-- Dados do Cliente para o Pedido -->
+          <div style="margin: 20px 0;">
+            <div class="form-group">
+              <label class="form-label" for="order-client-name">Seu Nome</label>
+              <input type="text" id="order-client-name" class="form-control" placeholder="Nome para identificação">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="order-client-date">Data do Evento / Entrega</label>
+              <input type="date" id="order-client-date" class="form-control">
+            </div>
+          </div>
+
+          <!-- Seletor de para qual WhatsApp enviar -->
+          <div class="whatsapp-selector-group">
+            <h4><i class="fa-brands fa-whatsapp"></i> Escolha o WhatsApp para envio:</h4>
+            <label class="wa-radio-label">
+              <input type="radio" name="order-wa-target" value="1" checked>
+              <span><strong>WhatsApp 1:</strong> (11) 99999-1111 (Orçamentos)</span>
+            </label>
+            <label class="wa-radio-label">
+              <input type="radio" name="order-wa-target" value="2">
+              <span><strong>WhatsApp 2:</strong> (11) 99999-2222 (Coordenação)</span>
+            </label>
+          </div>
+
+          <button class="btn btn-whatsapp btn-block" onclick="checkoutViaWhatsApp()" style="padding: 16px; font-size: 1.05rem;">
+            <i class="fa-brands fa-whatsapp"></i> Finalizar Pedido via WhatsApp
+          </button>
+
+          <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 14px;">
+            Ao clicar, abriremos o WhatsApp com a mensagem formatada contendo todos os pratos, porções e valores calculados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer do Site -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2>AE Buffet e Eventos</h2>
+          <p>
+            Dedicadas a transformar celebrações em memórias inesquecíveis através da alta gastronomia artesanal, ingredientes de primeira e afeto em cada detalhe.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Navegação Rápida</h3>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="switchTab('pratos')">Cardápio de Pratos</a></li>
+            <li><a href="javascript:void(0)" onclick="switchTab('quem-somos')">Nossa História (Quem Somos)</a></li>
+            <li><a href="javascript:void(0)" onclick="switchTab('contato')">Canais de Contato</a></li>
+            <li><a href="javascript:void(0)" onclick="switchTab('pedidos')">Meu Pedido / Carrinho</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Atendimento WhatsApp</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="https://wa.me/5511999991111" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp 1: (11) 99999-1111
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/5511999992222" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp 2: (11) 99999-2222
+              </a>
+            </li>
+            <li>
+              <a href="mailto:contato@aebuffeteventos.com.br">
+                <i class="fa-solid fa-envelope"></i> contato@aebuffeteventos.com.br
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 AE Buffet e Eventos. Todos os direitos reservados. Projeto desenvolvido para portfólio Front-end.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
